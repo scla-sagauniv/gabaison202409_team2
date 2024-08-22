@@ -1,0 +1,11 @@
+version: "3.0"
+services:
+  tester-app:
+    container_name: "ubuntu-tester"
+    build:
+      context: "."
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    tty: true
+
