@@ -1,11 +1,17 @@
 version: "3.0"
 services:
-  tester-app:
-    container_name: "gabaison-ubuntu"
+  frontend:
+    container_name: "gabaison-frontend"
     build:
       context: "."
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/frontend/dockerfile
     volumes:
-      - .:/app
+      - ./front-app:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    command: sh -c "npm run dev"
     tty: true
+volumes:
+  node_modules:
 
