@@ -1,6 +1,9 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import HeaderBar from "./components/HeaderBar";
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <HeaderBar />
+    </div>
+  );
 }
