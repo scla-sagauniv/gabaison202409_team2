@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 
-const header: NextPage = () => {
+const HeaderBar: NextPage = () => {
     return (
         <div>
             <AppBar position="fixed" sx={{ top: 0, width: '100%', bgcolor: '#f8bbd0' }} >
@@ -51,4 +51,4 @@ const header: NextPage = () => {
     )
 }
 
-export default header;
+export default HeaderBar;
