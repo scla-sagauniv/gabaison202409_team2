@@ -19,11 +19,13 @@ export default function ComposedTextField({ label, defaultValue }: UserFieldProp
       component="form"
       sx={{
         '& > :not(style)': { m: 1 },
+        width: '100%', // Boxの幅を100%に設定
+        margin: '0 auto', // 中央寄せ
       }}
       noValidate
       autoComplete="off"
     >
-      <FormControl>
+      <FormControl variant="outlined" fullWidth> {/* fullWidthプロパティを追加 */}
         <InputLabel htmlFor="component-outlined">{label}</InputLabel>
         <OutlinedInput
           id="component-outlined"
