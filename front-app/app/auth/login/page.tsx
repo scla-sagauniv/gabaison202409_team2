@@ -1,23 +1,30 @@
-import React from 'react'
-import BasicButtons from '@/app/components/BasicButtons';
-import UserField from '@/app/components/UserField';
+import React from "react";
+import BasicButtons from "@/app/components/BasicButtons";
+import UserField from "@/app/components/UserField";
+// import PersonIcon from "@mui/icons-material/Person";
 
 const Login = () => {
   return (
     <div>
-      <h1>ログイン</h1>
+      {/* <PersonIcon sx={{ fontSize: 40 }} /> */}
 
       <div>
-        <h2>UserId</h2>
-        <UserField label="UserId" defaultValue="" />
+        <UserField label="ユーザーID" defaultValue="" />
       </div>
       <div>
-        <h2>Password</h2>
-        <UserField label="Password" defaultValue="" />
+        <UserField label="パスワード" defaultValue="" />
       </div>
       <BasicButtons buttonText="ログイン" />
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/auth/register">新規登録</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
