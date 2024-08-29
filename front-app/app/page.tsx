@@ -14,6 +14,7 @@ interface Restrant {
   description: string;
 }
 
+
 export default function Home() {
 
   //apiでデータを取得する
@@ -55,7 +56,6 @@ export default function Home() {
           </Card>
         ))}
       </Box>
-
       <HomeBar />
     </div>
   );
