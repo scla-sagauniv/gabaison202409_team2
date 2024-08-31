@@ -18,6 +18,7 @@ services:
       dockerfile: ./docker/backend/dockerfile
     volumes:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/init:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
     environment:
