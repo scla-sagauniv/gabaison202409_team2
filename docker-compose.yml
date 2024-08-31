@@ -19,6 +19,7 @@ services:
     volumes:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./mysql/init:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -27,4 +28,5 @@ services:
       TZ: "Asia/Tokyo"
 volumes:
   node_modules:
+  mysql_data:
 
