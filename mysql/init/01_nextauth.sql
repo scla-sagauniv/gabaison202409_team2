@@ -73,10 +73,3 @@ CREATE UNIQUE INDEX email
 CREATE UNIQUE INDEX token
   ON verification_requests(token);
 
-CREATE TABLE tests
-  (
-    id         INT NOT NULL AUTO_INCREMENT,
-    created_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    updated_at TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
-    PRIMARY KEY (id)
-  );
