@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import { useState } from "react";
 import BasicButtons from "@/app/components/BasicButtons";
 import UserField from "@/app/components/UserField";
 import User1 from "../../images/user1.png";
