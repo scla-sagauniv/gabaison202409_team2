@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import * as z from "zod";
 const schema = z.object({
   email: z.string().email("正しいメールアドレスを入力してください"),
 });
+
 import BasicButtons from "@/app/components/BasicButtons";
 import UserField from "@/app/components/UserField";
 import User1 from "../../images/user1.png";
