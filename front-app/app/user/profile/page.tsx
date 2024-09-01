@@ -33,6 +33,19 @@ const Profile = () => {
         <div className="flex justify-center">
           <BasicButtons buttonText="保存する" />
         </div>
+
+        <nav className="mt-4 text-center w-full">
+          <ul>
+            <li>
+              <a
+                href="/"
+                className="text-blue-500 hover:text-blue-700"
+              >
+                Homeへ戻る
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );
