@@ -22,7 +22,7 @@ const executive = () => {
 
     return (
         <div>
-            {/* <HeaderBar />
+            <HeaderBar />
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <h1 className="text-4xl font-bold mb-4">利用可能な店舗情報</h1>
                 {stores.map(store => (
@@ -38,7 +38,7 @@ const executive = () => {
                         </select>
                     </div>
                 ))}
-            </div> */}
+            </div>
             <h1 className="text-xl">ページ1</h1>
         </div>
     );
