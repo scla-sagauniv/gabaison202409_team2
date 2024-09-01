@@ -1,16 +1,22 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { validationLoginSchema } from "../../lib/validationSchema";
+import { validationRegistSchema } from "../../lib/validationSchema";
+
+interface Error {
+  email: [];
+  password: [];
+  passwordConfirm: [];
+}
 
 const Page = () => {
   const { data: session, status } = useSession();
   const [resError, setResError] = useState<Error>();
+
   const {
     register,
     handleSubmit,
@@ -18,16 +24,18 @@ const Page = () => {
     formState: { errors },
   } = useForm({
     mode: "onChange",
-    resolver: zodResolver(validationLoginSchema),
+    resolver: zodResolver(validationRegistSchema),
   });
 
   //セッション判定
   if (session) redirect("/");
 
-  const handleLogin = async (data: any) => {
+  //登録処理
+  const handleRegist = async (data: any) => {
+    //フォーム取得
     const email = data.email;
     const password = data.password;
-    const res = await fetch("/api/signIn", {
+    const res = await fetch("/api/signUp", {
       body: JSON.stringify(data),
       headers: {
         "Content-type": "application/json",
@@ -45,14 +53,11 @@ const Page = () => {
     <>
       <div className="flex flex-col w-full h-screen text-sm items-center justify-center">
         <div className="flex flex-col items-center justify-center p-10 border-2 rounded-2xl">
-          <p className="text-2xl font-bold mb-5">ログイン画面</p>
+          <p className="text-2xl font-bold mb-5">アカウント登録</p>
           <form
-            onSubmit={handleSubmit(handleLogin)}
+            onSubmit={handleSubmit(handleRegist)}
             className="flex flex-col items-center"
           >
-            <div className="text-xs font-bold text-red-400 mb-4">
-              {resError as React.ReactNode}
-            </div>
             <label htmlFor="email">
               <p>メールアドレス</p>
               <input
@@ -63,6 +68,9 @@ const Page = () => {
               />
               <div className="text-xs font-bold text-red-400 mb-2">
                 {errors.email?.message as React.ReactNode}
+                {resError?.email?.map((error, index) => (
+                  <p key={index}>{error}</p>
+                ))}
               </div>
             </label>
             <label htmlFor="password">
@@ -75,37 +83,36 @@ const Page = () => {
               />
               <div className="text-xs font-bold text-red-400 mb-2">
                 {errors.password?.message as React.ReactNode}
+                {resError?.password?.map((error, index) => (
+                  <p key={index}>{error}</p>
+                ))}
+              </div>
+            </label>
+            <label htmlFor="passwordConfirm">
+              <p>再確認パスワード</p>
+              <input
+                type="password"
+                id="passwordConfirm"
+                {...register("passwordConfirm")}
+                className=" border-2 w-[300px] h-[35px] px-2 mb-2"
+              />
+              <div className="text-xs font-bold text-red-400 mb-2">
+                {errors.passwordConfirm?.message as React.ReactNode}
+                {resError?.passwordConfirm?.map((error, index) => (
+                  <p key={index}>{error}</p>
+                ))}
               </div>
             </label>
             <button
               type="submit"
-              className="text-white bg-gray-700 w-[300px] h-[35px] mt-2"
+              className="text-white bg-gray-700 w-[300px] h-[35px] my-2"
             >
-              ログイン
+              登録
             </button>
           </form>
-          <hr className="my-4 border-gray-300 w-[300px]" />
-          <div className="flex flex-col items-center">
-            <button
-              onClick={() => {
-                signIn("github");
-              }}
-              className="bg-white text-black border-2 w-[300px] h-[35px] mb-2"
-            >
-              Githubでログイン
-            </button>
-            <button
-              onClick={() => {
-                signIn("google");
-              }}
-              className="bg-white text-black border-2 w-[300px] h-[35px] mb-2"
-            >
-              Googleでログイン
-            </button>
-            <Link href="/signup" className="mt-2">
-              新規登録はこちら
-            </Link>
-          </div>
+          <Link href="/signin" className="mt-2">
+            ログインはこちら
+          </Link>
         </div>
       </div>
     </>
