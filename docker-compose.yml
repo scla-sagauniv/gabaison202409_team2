@@ -11,6 +11,22 @@ services:
     ports:
       - "3000:3000"
     command: sh -c "npm run dev"
+  backend:
+    container_name: "gabaison-backend"
+    build:
+      context: "."
+      dockerfile: ./docker/backend/dockerfile
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+#      - ./mysql/init:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      TZ: "Asia/Tokyo"
 volumes:
   node_modules:
+  mysql_data:
 
