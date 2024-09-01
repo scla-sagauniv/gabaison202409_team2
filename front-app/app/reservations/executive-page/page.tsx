@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import HeaderBar from "../../components/HeaderBar";
 import HomeBar from "../../components/HomeBar";
+import IMG_2545 from "../../images/IMG_2545.jpg";
+import Image from "next/image";
 
 const executive = () => {
     // 店の情報を配列として保持
@@ -39,6 +41,7 @@ const executive = () => {
                 {stores.map((store, index) => (
                     <div key={store.id} className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${index === stores.length - 1 ? "mb-20" : "mb-4"}`}>
                         <h2 className="text-green-700 text-lg font-semibold">{store.name}</h2>
+                        <Image src={IMG_2545} alt="Store" width={200} height={200} />
                         <p>Location: {store.location}</p>
                         <p>Availability: {store.available ? "Yes" : "No"}</p>
                         <select name="cnt" className="mt-2 p-2 border rounded">
