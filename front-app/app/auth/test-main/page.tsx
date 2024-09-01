@@ -9,7 +9,7 @@ export default function TestMain() {
     return (
         <>
             <div className="flex items-center flex-col">
-                <h1 className="text-3xl m-10 font-bold">Next Auth</h1>
+                {/* <h1 className="text-3xl m-10 font-bold">Next Auth</h1> */}
                 <div className="flex items-center flex-col m-5">
                 <div className="m-2">ログイン中のユーザー</div>
                 {status === "loading" ? (

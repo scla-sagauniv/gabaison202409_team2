@@ -110,7 +110,7 @@ const Page = () => {
               登録
             </button>
           </form>
-          <Link href="/signin" className="mt-2">
+          <Link href="/auth/test-signin" className="mt-2">
             ログインはこちら
           </Link>
         </div>

@@ -102,7 +102,7 @@ const Page = () => {
             >
               Googleでログイン
             </button>
-            <Link href="/signup" className="mt-2">
+            <Link href="/auth/test-signup" className="mt-2">
               新規登録はこちら
             </Link>
           </div>
