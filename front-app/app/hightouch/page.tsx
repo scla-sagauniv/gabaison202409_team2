@@ -1,13 +1,16 @@
+"use client"
 import { useState, useEffect } from 'react';
 
 const DeviceMotion = () => {
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false);
   const [acceleration, setAcceleration] = useState({ x: 0, y: 0, z: 0 });
+  const [teststate, setTeststate] = useState("test");
 
   const requestPermission = async () => {
     if (typeof DeviceMotionEvent !== 'undefined' && (DeviceMotionEvent as any).requestPermission) {
       try {
         const state: PermissionState = await (DeviceMotionEvent as any).requestPermission();
+        setTeststate(state);
         if (state === 'granted') {
           setPermissionGranted(true);
           setDeviceMotionEvent();
@@ -50,6 +53,12 @@ const DeviceMotion = () => {
           </div>
         </div>
       )}
+      <div>
+        {teststate}
+        <p id="x">x: {acceleration.x.toFixed(2)}</p>
+        <p id="y">y: {acceleration.y.toFixed(2)}</p>
+        <p id="z">z: {acceleration.z.toFixed(2)}</p>
+      </div>
       <style jsx>{`
         .box {
           display: flex;
