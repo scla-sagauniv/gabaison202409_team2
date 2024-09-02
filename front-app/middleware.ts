@@ -8,4 +8,6 @@ export default withAuth({
   }
 })
 
-export const config = { matcher: ["/((?!register|api|auth).*)"] }
+export const config = { matcher: ["/"] }
+
+// ((?!register|api|auth).*)
