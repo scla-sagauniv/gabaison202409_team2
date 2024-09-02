@@ -1,10 +1,12 @@
 import React from 'react'
 import HomeBar from '../../components/HomeBar'
+import HeaderBar from '@/app/components/HeaderBar'
 
 const page = () => {
     return (
         <div>
-            <p>参加者確認画面</p>
+            <HeaderBar></HeaderBar>
+
             <HomeBar status="participation"></HomeBar>
         </div>
     )
