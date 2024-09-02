@@ -1,6 +1,3 @@
--- AlterTable
-ALTER TABLE `User` ADD COLUMN `password` VARCHAR(191) NULL;
-
 -- CreateTable
 CREATE TABLE `Restaurants` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
