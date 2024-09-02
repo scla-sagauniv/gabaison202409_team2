@@ -9,7 +9,7 @@ interface BasicButtonsProps {
 export default function BasicButtons({ buttonText }: BasicButtonsProps) {
   return (
     <Stack spacing={2} direction="column" width="100%">
-      <Button variant="contained" fullWidth>
+      <Button variant="contained" fullWidth >
         {buttonText}
       </Button>
     </Stack>
