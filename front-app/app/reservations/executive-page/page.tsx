@@ -4,6 +4,7 @@ import HeaderBar from "../../components/HeaderBar";
 import HomeBar from "../../components/HomeBar";
 import IMG_2545 from "../../images/IMG_2545.jpg";
 import Image from "next/image";
+import {Stack} from "@mui/material";
 
 const executive = () => {
     // 店の情報を配列として保持
@@ -36,23 +37,19 @@ const executive = () => {
     return (
         <div>
             <HeaderBar />
+            
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <h1 className="text-3xl font-bold mb-4 m-20">利用可能な店舗</h1>
                 {stores.map((store, index) => (
-                    <div key={store.id} className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${index === stores.length - 1 ? "mb-20" : "mb-4"}`}>
+                    <div key={store.id} className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${index === stores.length - 1 ? "mb-10" : "mb-5"}`}>
                         <h2 className="text-green-700 text-lg font-semibold">{store.name}</h2>
-                        <Image src={IMG_2545} alt="Store" width={200} height={200} />
+                        
                         <p>Location: {store.location}</p>
-                        <p>Availability: {store.available}人</p>
-                        <select name="cnt" className="mt-2 p-2 border rounded">
-                            <option value="2" defaultValue="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        <p>利用可能な人数: {store.available}人</p>
                     </div>
                 ))}
             </div>
+            
             <HomeBar />
         </div>
     );
