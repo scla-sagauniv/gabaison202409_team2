@@ -2,11 +2,13 @@ import React from "react";
 import BasicButtons from "@/app/components/BasicButtons";
 import UserField from "@/app/components/UserField";
 import HomeBar from "@/app/components/HomeBar";
+import HeaderBar from "@/app/components/HeaderBar";
 
 const Profile = () => {
   return (
     <div>
-      <div className="flex flex-col justify-start items-center min-h-screen bg-gray-100 px-4 overflow-x-hidden pt-10">
+      <HeaderBar></HeaderBar>
+      <div className="flex flex-col justify-start items-center min-h-screen bg-gray-100 px-4 overflow-x-hidden pt-10 mt-10">
         <div className="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
           <h1 className="text-2xl font-semibold mb-6 text-center">
             ユーザー情報変更

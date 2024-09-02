@@ -3,12 +3,15 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     webpack: (config, context) => {
-        config.watchOptions = {
+      config.watchOptions = {
         poll: 1000,
-        aggregateTimeout: 300
-        }
-        return config
-    }
-};
-
-export default nextConfig;
+        aggregateTimeout: 300,
+      };
+      return config;
+    },
+    images: {
+      domains: ['via.placeholder.com'],
+    },
+  };
+  
+  export default nextConfig;
