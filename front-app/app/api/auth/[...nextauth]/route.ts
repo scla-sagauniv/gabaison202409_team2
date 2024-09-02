@@ -38,14 +38,14 @@ const handler = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/test-signIn",
+    signIn: "/auth/signIn",
   },
   session: {
     strategy: "jwt",
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      return "/auth/test-main";
+      return "/";
     },
   },
 });
