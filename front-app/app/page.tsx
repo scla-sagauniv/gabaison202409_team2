@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Box } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { useEffect, useState } from "react";
 
 interface Restrant {
   id: number;
@@ -18,9 +19,38 @@ interface Restrant {
 
 
 export default function Home() {
+  const [recruitings, setRecruitings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   //apiでデータを取得する
+  useEffect(() => {
+    //バックエンドからデータを取得する関数
+    const fetchRecruitings = async () => {
+      try {
+        const response = await fetch("/api/restaurants");
+        if (!response.ok) {
+          throw new Error("データの取得に失敗しました");
+        }
+        const data = await response.json();
+        setRecruitings(data.recruitings); //データをセット
+        setLoading(false); //ローディングを終了
+      } catch (err: any) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
 
+    fetchRecruitings(); //関数を実行
+  }, []);
+
+  if (loading) {
+    return <div>読み込み中...</div>;
+  }
+
+  if (error) {
+    return <div>エラー: {error}</div>;
+  }
   // ダミーデータ
   const dummy_data: Restrant[] = [
     { id: 1, name: "ra-men", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "soltRa-men" },
@@ -37,7 +67,7 @@ export default function Home() {
           募集中
         </Typography>
 
-        {dummy_data.map((res) => (
+        {recruitings.map((res) => (
           <Card key={res.id} sx={{ maxWidth: "100%", marginBottom: 2 }}>
             <CardActionArea>
               <CardMedia
