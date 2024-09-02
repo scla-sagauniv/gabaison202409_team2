@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Box } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Restrant {
   id: number;
@@ -21,10 +23,10 @@ export default function Home() {
 
   // ダミーデータ
   const dummy_data: Restrant[] = [
-    { id: 1, name: "ra-men", image: "ra-menImg", description: "soltRa-men" },
-    { id: 2, name: "sushi", image: "sushiImg", description: "egg" },
-    { id: 3, name: "karaage", image: "karaageImg", description: "solt" },
-    { id: 4, name: "omlet", image: "omletImg", description: "cheese" }
+    { id: 1, name: "ra-men", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "soltRa-men" },
+    { id: 2, name: "sushi", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "egg" },
+    { id: 3, name: "karaage", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "solt" },
+    { id: 4, name: "omlet", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "cheese" }
   ];
 
   return (
@@ -56,8 +58,18 @@ export default function Home() {
           </Card>
         ))}
       </Box>
-      <HomeBar />
-    </div>
+      <Stack direction="column" alignItems="center" marginBottom={17} >
+        <Button variant="contained" sx={{
+          width: "70%", height: 60, bgcolor: "#80cbc4",
+          "&:active": {
+            bgcolor: "#80cbc4", // クリック時の背景色を同じにする
+          }
+        }} href="./reservations/executive-page">
+          募集する
+        </Button>
+      </Stack>
+      <HomeBar status="home" />
+    </div >
   );
 }
 
