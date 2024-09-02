@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../lib/Prisma";
 
 export async function POST(req: NextRequest) {
-  const { max_guests, budget, meeting_time, guests } = await req.json();
+  const { max_guests, budget, meeting_time, restaurantId } = await req.json();
 
   try {
     //データベースに募集情報を追加
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
         max_guests,
         budget,
         meeting_time,
-        guests,
+        restaurantId,
       },
     });
 
