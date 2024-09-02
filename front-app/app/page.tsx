@@ -1,3 +1,4 @@
+"use client"
 import HeaderBar from "./components/HeaderBar";
 import HomeBar from "./components/HomeBar";
 import * as React from 'react';
@@ -20,6 +21,8 @@ interface Restrant {
 
 export default function Home() {
   const [recruitings, setRecruitings] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
+  const [fetcheddata, setFetcheddata] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -28,7 +31,7 @@ export default function Home() {
     //バックエンドからデータを取得する関数
     const fetchRecruitings = async () => {
       try {
-        const response = await fetch("/api/restaurants");
+        const response = await fetch("/api/getrestaurantsandrecruitings");
         if (!response.ok) {
           throw new Error("データの取得に失敗しました");
         }
@@ -40,8 +43,10 @@ export default function Home() {
         setLoading(false);
       }
     };
+    
 
     fetchRecruitings(); //関数を実行
+
   }, []);
 
   if (loading) {
@@ -59,6 +64,7 @@ export default function Home() {
     { id: 4, name: "omlet", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "cheese" }
   ];
 
+  console.log(recruitings);
   return (
     <div>
       <HeaderBar />
@@ -68,8 +74,15 @@ export default function Home() {
         </Typography>
 
         {recruitings.map((res) => (
-          <Card key={res.id} sx={{ maxWidth: "100%", marginBottom: 2 }}>
-            <CardActionArea>
+          <Card key={res["id"]} sx={{ maxWidth: "100%", marginBottom: 2 }}>
+            <div>max_guests: {res["max_guests"]}</div>
+            <div>budget: {res["budget"]}</div>
+            <div>meeting_time: {res["meeting_time"]}</div>
+            <div>restaurant name: {res["restaurant"]["name"]}</div>
+            <div>restaurant address: {res["restaurant"]["address"]}</div>
+            <div>restaurant description: {res["restaurant"]["description"]}</div>
+            <div>restaurant image_url: {res["restaurant"]["image_url"]}</div>
+            {/* <CardActionArea>
               <CardMedia
                 component="img"
                 height="140"
@@ -84,7 +97,7 @@ export default function Home() {
                   {res.description}
                 </Typography>
               </CardContent>
-            </CardActionArea>
+            </CardActionArea> */}
           </Card>
         ))}
       </Box>
