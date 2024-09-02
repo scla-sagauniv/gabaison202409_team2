@@ -29,6 +29,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   guests Guests[]
+  friends UserOnFriends[]
 }
  
 model Account {
@@ -118,7 +119,7 @@ model Guests{
 }
 
 model Members{
-  guest Guests @reration(fields: [guestId], references: [id])
+  guest Guests @relation(fields: [guestId], references: [id])
   guestId Int @unique
   recruiting Recruitings @relation(fields: [recruitingId], references: [id])
   recruitingId Int @unique
@@ -127,3 +128,20 @@ model Members{
 
   @@id([guestId, recruitingId])
 }
+
+model Friends{
+  id Int @id @default(autoincrement())
+  user UserOnFriends[]
+}
+
+model UserOnFriends{
+  user User @relation(fields: [userId], references: [id])
+  userId String  @unique
+  friend Friends @relation(fields: [friendId], references: [id])
+  friendId Int @unique
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([userId, friendId])
+}
+
