@@ -18,7 +18,6 @@ import { useState, useEffect, useRef } from 'react'
 import jsQR from 'jsqr'
 
 
-
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
         children: React.ReactElement<any, any>;
@@ -160,7 +159,6 @@ const HighTouch = () => {
             }
         }
     };
-
     return (
         <div>
             <div style={{
