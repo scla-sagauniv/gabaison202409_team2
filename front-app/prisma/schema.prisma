@@ -28,6 +28,7 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  guests Guests?
 }
  
 model Account {
@@ -88,4 +89,31 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@id([userId, credentialID])
+}
+
+model Restaurants{
+  id Int @id @default(autoincrement())
+  address String @unique
+  name String?
+  description String?
+  image_url String?
+  recruitings Recruitings?
+}
+
+model Recruitings{
+  id Int @id @default(autoincrement())
+  max_guests String
+  budget String
+  meeting_time String
+  restaurant Restaurants @relation(fields: [restaurantId], references: [id])
+  restaurantId Int @unique
+  guests Guests?
+}
+
+model Guests{
+  id Int @id @default(autoincrement())
+  recruiting Recruitings @relation(fields: [recruitingId], references: [id])
+  users User @relation(fields: [usersId], references: [id])
+  recruitingId Int @unique
+  usersId String @unique
 }
