@@ -17,7 +17,7 @@ const RestaurantList = () => {
         const data = await response.json();
         setRestaurants(data.restaurants); //データをセット
         setLoadingl(false); //ローディングを終了
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
         setLoadingl(false);
       }
@@ -39,13 +39,13 @@ const RestaurantList = () => {
       <h1 className="text-2xl font-bold text-center mb-6">飲食店一覧</h1>
       <ul className="space-y-4">
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className="p-4 bg-white shadow-md rounded-lg">
-            <h2 className="text-xl font-semibold">{restaurant.name}</h2>
-            <p>住所: {restaurant.address}</p>
-            <p>{restaurant.description}</p>
+          <li key={restaurant["id"]} className="p-4 bg-white shadow-md rounded-lg">
+            <h2 className="text-xl font-semibold">{restaurant["name"]}</h2>
+            <p>住所: {restaurant["address"]}</p>
+            <p>{restaurant["description"]}</p>
             <img
-              src={restaurant.image_url}
-              alt={restaurant.name}
+              src={restaurant["image_url"]}
+              alt={restaurant["name"]}
               className="w-full h-auto rounded-lg mt-2"
             />
           </li>
