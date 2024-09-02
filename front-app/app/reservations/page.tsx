@@ -1,47 +1,34 @@
 import React from "react";
+import HeaderBar from "../components/HeaderBar";
+import HomeBar from "../components/HomeBar";
+import Restaurant from "../images/yakiniku.jpg";
 import Image from "next/image";
-import bard from "../../images/TSUTAYA佐賀大学.jpg";
-import HomeBar from "@/app/components/HomeBar";
-import HeaderBar from "@/app/components/HeaderBar";
-import { Typography } from "@mui/material";
-import Button from "@mui/material/Button";
 
-const Confirm = () => {
+//幹事用の画面
+const Reservation = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <HeaderBar />
-
-      <div className="flex justify-center items-center pt-20 pb-4">
-        <div className="w-11/12">
-          <Image
-            src={bard}
-            layout="responsive"
-            width={100}
-            height={100}
-            alt="food"
-            className="object-cover"
-          />
-        </div>
+    <div>
+      {/* <HeaderBar /> */}
+      <div className="text-2xl font-bold text-center pt-12">参加確認画面</div>
+      <div className="flex justify-center ">
+        <Image
+          src={Restaurant}
+          alt="User"
+          width={500}
+          height={500}
+          className="w-full h-auto max-w-xs mx-auto"
+        />
       </div>
+      <div className="font-bold text-left">焼肉キング</div>
+      <div>お店の紹介</div>
+      <div className="flex justfy-center w-96 h-32 border border-black "></div>
+      <div className="pt-5">お店の位置情報</div>
+      <div className="h-32 w-64 border border-black rounded-lg shadow-lg"></div>
+      <div>現在の人数</div>
 
-      <div className="px-4">
-        <Typography variant="h4" component="h5" className="pt-5">
-          Restrant Name
-        </Typography>
-        <Typography variant="h5" component="h6" className="pt-5">
-          参加者： 10人
-        </Typography>
-      </div>
-
-      <div className="flex flex-col items-center pt-16">
-        <Button variant="contained" sx={{ width: "70%" }}>
-          予約する
-        </Button>
-      </div>
-
-      <HomeBar />
+      {/* <HomeBar /> */}
     </div>
   );
 };
 
-export default Confirm;
+export default Reservation;
