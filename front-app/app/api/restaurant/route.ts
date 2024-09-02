@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../lib/Prisma";
 
 export async function POST(req: NextRequest) {
+  const data = await req.json();
+  const { name, address, description, image_url } = data;
+
   try {
     // リクエストボディをJSON形式で取得
     const data = await req.json();
@@ -9,10 +12,10 @@ export async function POST(req: NextRequest) {
     // データベースに新しい飲食店情報を追加
     await prisma.restaurant.create({
       data: {
-        name: data.name,
-        address: data.address,
-        description: data.description,
-        image_url: data.image_url,
+        name: name,
+        address: address,
+        description: description,
+        image_url: image_url,
       },
     });
 
@@ -24,6 +27,19 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error:", error);
     // エラーメッセージを返す
+    return new NextResponse(
+      JSON.stringify({ error: "Internal Server Error" }),
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req: NextRequest) {
+  try {
+    const restaurants = await prisma.restaurant.findMany();
+    return new NextResponse(JSON.stringify({ restaurants }), { status: 200 });
+  } catch (error) {
+    console.error("Error:", error);
     return new NextResponse(
       JSON.stringify({ error: "Internal Server Error" }),
       { status: 500 }
