@@ -11,6 +11,7 @@ services:
     ports:
       - "3000:3000"
       - "5555:5555"
+      - "3001:3001"
     command: sh -c "npm run dev"
   backend:
     container_name: "gabaison-backend"
