@@ -14,7 +14,7 @@ generator client {
 }
  
 model User {
-  id            String             @id @default(cuid())
+  id            String          @id @default(cuid())
   password      String?
   name          String?
   username      String?         @unique
@@ -28,8 +28,7 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  guests Guests? 
+  guests Guests?
 }
  
 model Account {
