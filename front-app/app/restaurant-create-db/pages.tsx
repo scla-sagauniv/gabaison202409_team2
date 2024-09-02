@@ -2,7 +2,7 @@ import React from 'react'
 
 const RestaurantCreateDb = () => {
   return (
-    <div>RestaurantCreateDb</div>;
+    <div>RestaurantCreateDb</div>
   )
 }
 
