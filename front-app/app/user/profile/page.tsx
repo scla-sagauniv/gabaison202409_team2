@@ -17,7 +17,7 @@ const Profile = () => {
           >
             名前
           </label>
-          <UserField label="名前" defaultValue="" id="name" />
+          <UserField label="名前" defaultValue="" />
         </div>
 
         <div className="mb-6">
@@ -27,7 +27,7 @@ const Profile = () => {
           >
             メールアドレス
           </label>
-          <UserField label="メールアドレス" defaultValue="" id="email" />
+          <UserField label="メールアドレス" defaultValue="" />
         </div>
 
         <div className="flex justify-center">

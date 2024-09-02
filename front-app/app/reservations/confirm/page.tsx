@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import bard from "../../images/TSUTAYA佐賀大学.jpg"
+import bard from "../../images/TSUTAYA-SagaUni.jpg"
 import { Typography } from "@mui/material";
 import HomeBar from "@/app/components/HomeBar";
 import HeaderBar from "@/app/components/HeaderBar";
