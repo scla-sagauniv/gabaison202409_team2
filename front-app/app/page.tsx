@@ -19,12 +19,14 @@ export default function Home() {
 
   //apiでデータを取得する
 
+  const img = "./images/TSUTAYA-SagaUni";
+
   // ダミーデータ
   const dummy_data: Restrant[] = [
-    { id: 1, name: "ra-men", image: "ra-menImg", description: "soltRa-men" },
-    { id: 2, name: "sushi", image: "sushiImg", description: "egg" },
-    { id: 3, name: "karaage", image: "karaageImg", description: "solt" },
-    { id: 4, name: "omlet", image: "omletImg", description: "cheese" }
+    { id: 1, name: "ra-men", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "soltRa-men" },
+    { id: 2, name: "sushi", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "egg" },
+    { id: 3, name: "karaage", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "solt" },
+    { id: 4, name: "omlet", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "cheese" }
   ];
 
   return (
