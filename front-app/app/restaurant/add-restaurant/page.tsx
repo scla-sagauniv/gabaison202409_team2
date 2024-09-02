@@ -39,7 +39,7 @@ const AddRestaurant = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+restaurant-api-sample    <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-6">Add Restaurant</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
