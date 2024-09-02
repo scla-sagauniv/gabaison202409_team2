@@ -2,16 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../lib/Prisma";
 
 export async function POST(req: NextRequest) {
-  const { max_guests, budget, meeting_time, guests } = await req.json();
+  const { max_guests, budget, meeting_time, restaurantID } = await req.json();
 
   try {
     //データベースに募集情報を追加
-    await prisma.recruting.create({
+    await prisma.recruitings.create({
       data: {
         max_guests,
         budget,
         meeting_time,
-        guests,
+        restaurant:{
+          connect:{ id: restaurantID }
+        }
       },
     });
 
@@ -32,7 +34,7 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const recruting = await prisma.recruting.findMany();
+    const recruting = await prisma.recruitings.findMany();
 
     return new NextResponse(JSON.stringify({ recruting }), { status: 200 });
   } catch (error) {
