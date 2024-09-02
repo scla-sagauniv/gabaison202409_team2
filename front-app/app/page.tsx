@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Box } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 interface Restrant {
   id: number;
@@ -58,8 +60,18 @@ export default function Home() {
           </Card>
         ))}
       </Box>
+      <Stack direction="column" alignItems="center" marginBottom={17} >
+        <Button variant="contained" sx={{
+          width: "70%", height: 60, bgcolor: "#80cbc4",
+          "&:active": {
+            bgcolor: "#80cbc4", // クリック時の背景色を同じにする
+          }
+        }}>
+          募集する
+        </Button>
+      </Stack>
       <HomeBar />
-    </div>
+    </div >
   );
 }
 
