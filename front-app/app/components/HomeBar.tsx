@@ -9,9 +9,13 @@ import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
-export default function HomeBar() {
+interface HomeBarProps {
+    status: string;
+}
+
+export default function HomeBar({ status }: HomeBarProps) {
     //初期値がホームになっているので，あとでページのルートによって初期値を変更する
-    const [value, setValue] = React.useState('home');
+    const [value, setValue] = React.useState(status);
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -23,26 +27,35 @@ export default function HomeBar() {
                 label="MyPage"
                 value="mypage"
                 icon={<PersonRoundedIcon />}
+                href={"../user/profile"}
             />
+
             <BottomNavigationAction
                 label="Participation"
                 value="participation"
                 icon={<CheckRoundedIcon />}
+                href={"../participation/join"}
             />
+
             <BottomNavigationAction
                 label="Home"
                 value="home"
                 icon={<HomeRoundedIcon />}
+                href={"/"}
             />
+
             <BottomNavigationAction
                 label="Reservation"
                 value="reservation"
                 icon={<AddCircleOutlineRoundedIcon />}
+                href={"../reservations/executive-page"}
             />
+
             <BottomNavigationAction
                 label="Friends"
                 value="friends"
                 icon={<GroupRoundedIcon />}
+                href={"../friends"}
             />
         </BottomNavigation>
     );
