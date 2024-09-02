@@ -1,6 +1,4 @@
-FROM ubuntu:22.04
-
-WORKDIR /app/
+FROM mysql:9.0.1
 
 
 

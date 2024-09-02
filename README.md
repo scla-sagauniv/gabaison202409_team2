@@ -6,3 +6,4 @@
  - ターミナルを起動
  - docker compose build (これはdockerfile等に変更があったときのみ)
  - docker compose up
+ - frontendコンテナに入りnpx prisma migrate deploy
