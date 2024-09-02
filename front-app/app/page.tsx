@@ -21,8 +21,6 @@ export default function Home() {
 
   //apiでデータを取得する
 
-  const img = "./images/TSUTAYA-SagaUni";
-
   // ダミーデータ
   const dummy_data: Restrant[] = [
     { id: 1, name: "ra-men", image: "https://thumb.ac-illust.com/0e/0ebed336b7870c9d83128eb9f311c14f_w.jpeg", description: "soltRa-men" },
@@ -66,11 +64,11 @@ export default function Home() {
           "&:active": {
             bgcolor: "#80cbc4", // クリック時の背景色を同じにする
           }
-        }}>
+        }} href="./reservations/executive-page">
           募集する
         </Button>
       </Stack>
-      <HomeBar />
+      <HomeBar status="home" />
     </div >
   );
 }

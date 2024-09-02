@@ -61,7 +61,7 @@ const detail = () => {
                 </Button>
             </Stack>
 
-            <HomeBar></HomeBar>
+            <HomeBar status="home"></HomeBar>
         </div>
     )
 };

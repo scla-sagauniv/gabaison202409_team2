@@ -37,7 +37,7 @@ const Confirm = () => {
         </Button>
       </Stack>
 
-      <HomeBar></HomeBar>
+      <HomeBar status="reservation"></HomeBar>
     </div>
   )
 };
