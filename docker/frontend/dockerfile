@@ -6,3 +6,7 @@ COPY ./front-app/package.json ./
 
 RUN npm install
 
+COPY ./front-app/prisma ./
+COPY ./front-app/.env ./
+
+RUN npx prisma generate

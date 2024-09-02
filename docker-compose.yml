@@ -11,6 +11,8 @@ services:
     ports:
       - "3000:3000"
     command: sh -c "npm run dev"
+    depends_on:
+      - backend
   backend:
     container_name: "gabaison-backend"
     build:
