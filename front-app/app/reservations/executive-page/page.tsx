@@ -1,10 +1,8 @@
 "use client";
-import { useRouter } from "front/router";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const RestaurantList = () => {
-  const router = useRouter();
-  const { id } = router.query;
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoadingl] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +18,7 @@ const RestaurantList = () => {
         const data = await response.json();
         setRestaurants(data.restaurants); //データをセット
         setLoadingl(false); //ローディングを終了
-      } catch (err: any) {
+      } catch (err) {
         setError(err.message);
         setLoadingl(false);
       }
@@ -42,20 +40,17 @@ const RestaurantList = () => {
       <h1 className="text-2xl font-bold text-center mb-6">飲食店一覧</h1>
       <ul className="space-y-4">
         {restaurants.map((restaurant) => (
-          <li
-            key={restaurant["id"]}
-            className="p-4 bg-white shadow-md rounded-lg"
-          >
-            <button>
-              <h2 className="text-xl font-semibold">{restaurant["name"]}</h2>
-              <p>住所: {restaurant["address"]}</p>
-              <p>{restaurant["description"]}</p>
+          <li key={restaurant.id} className="p-4 bg-white shadow-md rounded-lg">
+            <Link href={`/restaurants/${restaurant.id}`}>
+              <h2 className="text-xl font-semibold">{restaurant.name}</h2>
+              <p>住所: {restaurant.address}</p>
+              <p>{restaurant.description}</p>
               <img
-                src={restaurant["image_url"]}
-                alt={restaurant["name"]}
+                src={restaurant.image_url}
+                alt={restaurant.name}
                 className="w-full h-auto rounded-lg mt-2"
               />
-            </button>
+            </Link>
           </li>
         ))}
       </ul>
