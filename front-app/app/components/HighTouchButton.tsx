@@ -31,7 +31,9 @@ const HighTouch = () => {
 
     const [open, setOpen] = React.useState(false);
     const [change, setChange] = React.useState<string>("カメラ")
-    const [img, setImg] = React.useState<string>("")
+
+    const user_id: string = "172.27.117.148:3000"
+    const [img, setImg] = React.useState<string>(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${user_id}`)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -48,7 +50,7 @@ const HighTouch = () => {
             setImg("https://cdn-ak.f.st-hatena.com/images/fotolife/c/cruller/20190516/20190516214640.png")
         } else {
             setChange("カメラ")
-            setImg("https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/QR_code_desktop_Japanese_Wikipedia.svg/640px-QR_code_desktop_Japanese_Wikipedia.svg.png")
+            setImg(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${user_id}`)
         }
 
 
