@@ -14,7 +14,7 @@ import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
 const HeaderBar: NextPage = () => {
   return (
     <div>
-      <AppBar
+      {/* <AppBar
         position="fixed"
         sx={{ top: 0, width: "100%", bgcolor: "#f8bbd0" }}
       >
@@ -49,7 +49,7 @@ const HeaderBar: NextPage = () => {
             </Box>
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBar> */}
     </div>
   );
 };
