@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import bard from "../../images/TSUTAYA-SagaUni.jpg"
+import bard from "../../images/TSUTAYA-SagaUni.jpg";
 import { Typography } from "@mui/material";
 import HomeBar from "@/app/components/HomeBar";
 import HeaderBar from "@/app/components/HeaderBar";
@@ -23,9 +23,9 @@ const Confirm = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const data ={
+        const data = {
           restaurantId: Number(searchParams.get("id")),
-        }
+        };
         const response = await fetch("/api/getrestaurantbyid", {
           body: JSON.stringify(data),
           headers: {
@@ -47,7 +47,6 @@ const Confirm = () => {
 
     fetchRestaurants();
   }, []);
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -80,6 +79,7 @@ const Confirm = () => {
     }
   };
 
+
   if (loading) {
     return <div>読み込み中...</div>;
   }
@@ -95,8 +95,16 @@ const Confirm = () => {
   return (
     <div>
       <HeaderBar></HeaderBar>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 80, paddingBottom: 10 }}>
-        <div style={{ width: '90%' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 80,
+          paddingBottom: 10,
+        }}
+      >
+        <div style={{ width: "90%" }}>
           <Image
             src={bard}
             layout="responsive"
@@ -107,10 +115,15 @@ const Confirm = () => {
         </div>
       </div>
 
-      <Typography variant="h4" component="h5" textAlign="left" sx={{ paddingTop: 5, paddingLeft: 3 }}>
+      <Typography
+        variant="h4"
+        component="h5"
+        textAlign="left"
+        sx={{ paddingTop: 5, paddingLeft: 3 }}
+      >
         {restaurant["name"]}
       </Typography>
-      {/* <Typography variant="h5" component="h6" textAlign="left" sx={{ paddingTop: 5, paddingLeft: 3 }}>
+      <Typography variant="h5" component="h6" textAlign="left" sx={{ paddingTop: 5, paddingLeft: 3 }}>
         利用可能人数： 10人
       </Typography> */}
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -168,7 +181,7 @@ const Confirm = () => {
 
       <HomeBar status="reservation"></HomeBar>
     </div>
-  )
+  );
 };
 
 export default Confirm;
