@@ -23,7 +23,7 @@ export default function HomeBar({ status }: HomeBarProps) {
 
     return (
         <BottomNavigation sx={{ position: 'fixed', bottom: 0, left: 0, right: 0, width: "100%", bgcolor: '#b2ebf2' }} value={value} onChange={handleChange}>
-            {/* <BottomNavigationAction
+            <BottomNavigationAction
                 label="MyPage"
                 value="mypage"
                 icon={<PersonRoundedIcon />}
@@ -56,7 +56,7 @@ export default function HomeBar({ status }: HomeBarProps) {
                 value="friends"
                 icon={<GroupRoundedIcon />}
                 href={"../friends"}
-            /> */}
+            />
         </BottomNavigation>
     );
 }
