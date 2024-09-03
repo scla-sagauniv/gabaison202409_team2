@@ -1,10 +1,10 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import HeaderBar from "../../components/HeaderBar";
-import HomeBar from "../../components/HomeBar";
-import { Stack, Button } from "@mui/material";
-import Image from "next/image";
+
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
+import HeaderBar from "@/app/components/HeaderBar";
+import HomeBar from "@/app/components/HomeBar";
+import { Button } from "@mui/material";
 
 const stores = [
   { id: 1, name: "Store A", location: "Tokyo", available: 5, url: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Red" },
@@ -22,46 +22,54 @@ const stores = [
   { id: 13, name: "Store M", location: "Shizuoka", available: 5, url: "https://via.placeholder.com/150/FF00FF/FFFFFF?text=Magenta" },
 ];
 
-const Executive = () => {
-  const [isClient, setIsClient] = useState(false);
-  const router = useRouter();
+interface Store {
+  id: number;
+  name: string;
+  location: string;
+  available: number;
+  url: string;
+}
+
+function StoreDetail() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const [store, setStore] = useState<Store | null>(null);
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (id) {
+      const storeData = stores.find((store) => store.id === parseInt(id));
+      if (storeData) {
+        setStore(storeData);
+      }
+    }
+  }, [id]);
 
-  if (!isClient) {
-    return null;
+  if (!store) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
       <HeaderBar />
-      <Stack marginBottom={10}>
-        <div className="flex flex-col items-center justify-center min-h-screen">
-          <h1 className="text-3xl font-bold mb-4 m-20">利用可能な店舗</h1>
-          {stores.map((store, index) => (
-            <Button
-              key={store.id}
-              className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${index === stores.length - 1 ? "mb-20" : "mb-4"}`}
-              style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
-              onClick={() => router.push(`/reservations/test?id=${store.id}`)} // ここでルーティング
-            >
-              <div style={{ width: "150px", height: "150px", backgroundColor: "#E0E0E0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Image src={store.url} alt={`${store.name} image`} width={150} height={150} />
-              </div>
-              <div style={{ marginLeft: "20px" }}>
-                <h2 className="text-black text-lg font-semibold">{store.name}</h2>
-                <p>場所: {store.location}</p>
-                <p>利用可能人数: {store.available}人</p>
-              </div>
-            </Button>
-          ))}
+      <div className="flex flex-col items-center">
+        <div className="flex justify-center items-center  mt-10">
+          <img src={store.url} alt={store.name} className="h-auto rounded mt-10" />
         </div>
-      </Stack>
-      <HomeBar status="reservation" />
+        <h1 className="text-xl font-bold mb-2">{store.name}</h1>
+        <p className="text-md mb-1">場所: {store.location}</p>
+        <p className="text-md mb-4">利用可能人数: {store.available}人</p>
+        <Button
+          variant="contained"
+          color="primary"
+          className="w-full"
+          style={{ backgroundColor: "#a5a6f6", color: "#fff", padding: "12px", fontSize: "16px", borderRadius: "8px" }}
+        >
+          予約する
+        </Button>
+      </div>
+      <HomeBar status="none" />
     </div>
   );
-};
+}
 
-export default Executive;
+export default StoreDetail;
