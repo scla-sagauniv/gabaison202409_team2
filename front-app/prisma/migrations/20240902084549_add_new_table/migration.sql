@@ -18,7 +18,7 @@ CREATE TABLE `Recruitings` (
     `meeting_time` VARCHAR(191) NOT NULL,
     `restaurantId` INTEGER NOT NULL,
 
-    UNIQUE INDEX `Recruitings_restaurantId_key`(`restaurantId`),
+--    UNIQUE INDEX `Recruitings_restaurantId_key`(`restaurantId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -28,8 +28,8 @@ CREATE TABLE `Guests` (
     `recruitingId` INTEGER NOT NULL,
     `usersId` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Guests_recruitingId_key`(`recruitingId`),
-    UNIQUE INDEX `Guests_usersId_key`(`usersId`),
+--    UNIQUE INDEX `Guests_recruitingId_key`(`recruitingId`),
+--    UNIQUE INDEX `Guests_usersId_key`(`usersId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

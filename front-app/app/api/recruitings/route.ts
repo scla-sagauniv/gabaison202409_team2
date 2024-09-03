@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
         budget,
         meeting_time,
         restaurant:{
-          connect:{ id: restaurantID }
+          connect:{ id: Number(restaurantID) }
         }
       },
     });

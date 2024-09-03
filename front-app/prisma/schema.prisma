@@ -107,22 +107,22 @@ model Recruitings{
   budget String
   meeting_time String
   restaurant Restaurants @relation(fields: [restaurantId], references: [id])
-  restaurantId Int @unique
+  restaurantId Int
   guests Members[]
 }
 
 model Guests{
   id Int @id @default(autoincrement())
   users User @relation(fields: [usersId], references: [id])
-  usersId String @unique
+  usersId String
   recruitings Members[]
 }
 
 model Members{
   guest Guests @relation(fields: [guestId], references: [id])
-  guestId Int @unique
+  guestId Int
   recruiting Recruitings @relation(fields: [recruitingId], references: [id])
-  recruitingId Int @unique
+  recruitingId Int
   assignedAt DateTime @default(now())
   assignedBy String
 
@@ -136,9 +136,9 @@ model Friends{
 
 model UserOnFriends{
   user User @relation(fields: [userId], references: [id])
-  userId String  @unique
+  userId String
   friend Friends @relation(fields: [friendId], references: [id])
-  friendId Int @unique
+  friendId Int
   assignedAt DateTime @default(now())
   assignedBy String
 
