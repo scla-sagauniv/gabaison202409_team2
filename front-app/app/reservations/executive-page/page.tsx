@@ -68,15 +68,33 @@ const Executive = () => {
           {restaurants.map((res, index) => (
             <Button
               key={res["id"]}
-              className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${index === restaurants.length - 1 ? "mb-20" : "mb-4"}`}
-              style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
+              className={`bg-white p-4 rounded shadow-md mb-4 w-80 ${
+                index === restaurants.length - 1 ? "mb-20" : "mb-4"
+              }`}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
               href={`/reservations/confirm?id=${res["id"]}`}
             >
-              <div style={{ width: "150px", height: "150px", backgroundColor: "#E0E0E0", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  backgroundColor: "#E0E0E0",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 {/* <Image src={res["image_url"]} alt={`${res["name"]} image`} width={150} height={150} /> */}
               </div>
               <div style={{ marginLeft: "20px" }}>
-                <h2 className="text-black text-lg font-semibold">{res["name"]}</h2>
+                <h2 className="text-black text-lg font-semibold">
+                  {res["name"]}
+                </h2>
                 <p>場所: {res["address"]}</p>
                 {/* <p>利用可能人数: {store.available}人</p> */}
               </div>
